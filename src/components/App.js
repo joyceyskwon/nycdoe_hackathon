@@ -1,25 +1,73 @@
 import React, { Component } from 'react';
-import logo from '../logo.svg';
 import './App.css';
+import data from '../nycdoe_data.json'
+import StudentList from './StudentList'
+import Filters from './Filters'
 
 class App extends Component {
+
+  state = {
+    students: [],
+    filteredStudents: []
+  }
+
+  componentDidMount() {
+    this.getStudentData()
+  }
+
+  getStudentData = () => {
+    this.setState({
+      students: data
+    })
+  }
+
+  filterSWDStudents = e => {
+    if(e.target.value === "swd") {
+      let filteredStudents = this.state.students.filter(s => {
+        return s.Ability === "SWD"
+      })
+      this.setState({ filteredStudents })
+    } else {
+      let filteredStudents = this.state.students.filter(s => {
+        return s.Ability === "Not SWD"
+      })
+      this.setState({ filteredStudents })
+    }
+  }
+
+  filterFRLStudents = e => {
+    if(e.target.value === "yes") {
+      let filteredStudents = this.state.students.filter(s => {
+        return s.frl_boolean === true
+      })
+      this.setState({ filteredStudents })
+    } else {
+      let filteredStudents = this.state.students.filter(s => {
+        return s.frl_boolean === false
+      })
+      this.setState({ filteredStudents })
+    }
+  }
+
+  filterByMathScore = e => {
+    if(e.target.value === 1) {
+
+    }
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <h1>Student Data</h1>
+        <p>NYC FRL consensus is 74%.</p>
+        <Filters
+          filterSWDStudents={this.filterSWDStudents}
+          filterByMathScore={this.filterByMathScore}
+          filterFRLStudents={this.filterFRLStudents}
+        />
+        <StudentList
+          students={this.state.filteredStudents}
+        />
       </div>
     );
   }
