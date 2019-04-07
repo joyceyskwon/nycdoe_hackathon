@@ -59,7 +59,8 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Student Data</h1>
-        <p>NYC FRL consensus is 74%.</p>
+        <p>NYC FRL consensus is 74%</p>
+        <img src="http://www.educationplanner.org/images/landing-page/promo-students.jpg" alt="high_school_students"/>
         <Filters
           filterSWDStudents={this.filterSWDStudents}
           filterByMathScore={this.filterByMathScore}

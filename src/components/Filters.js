@@ -6,9 +6,9 @@ class Filters extends Component {
     return (
       <div>
         <select onChange={e=>this.props.filterSWDStudents(e)}>
-          <option value="">Please Select</option>
-          <option value="swd">SWD</option>
-          <option value="non_swd">Non SWD</option>
+          <option value="">Is Student SWD?</option>
+          <option value="swd">Yes</option>
+          <option value="non_swd">No</option>
         </select>
       </div>
     )
