@@ -50,8 +50,16 @@ class App extends Component {
   }
 
   filterByMathScore = e => {
-    if(e.target.value === 1) {
-
+    if(e.target.value === 2) {
+      let filteredStudents = this.state.students.filter(s => {
+        return s.math_test <= 2
+      })
+      this.setState({ filteredStudents })
+    } else {
+      let filteredStudents = this.state.students.filter(s => {
+        return s.math_test >= 3
+      })
+      this.setState({ filteredStudents })
     }
   }
 

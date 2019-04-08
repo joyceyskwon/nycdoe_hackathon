@@ -31,10 +31,8 @@ class Filters extends Component {
       <div>
         <select onChange={e=>this.props.filterByMathScore(e)}>
           <option value="">Please Select Math Score</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
+          <option value="2">2 or below</option>
+          <option value="3">3 or higher</option>
         </select>
       </div>
     )
